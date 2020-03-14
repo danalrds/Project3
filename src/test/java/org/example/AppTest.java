@@ -13,6 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 /**
  * Unit test for simple App.
@@ -43,6 +44,7 @@ public class AppTest {
             e.printStackTrace();
             thrown=true;
         }
+        assertFalse(thrown);
         assertEquals(studentService.getById("1").getNume(), name);
     }
 
@@ -56,6 +58,7 @@ public class AppTest {
             e.printStackTrace();
             thrown=true;
         }
+        assertFalse(thrown);
         Student student=studentXMLService.findOne("1");
         assertEquals(student.getNume(),"isabela");
     }
