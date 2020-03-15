@@ -46,83 +46,16 @@ public class AppTest {
         assertFalse(thrown);
         assertEquals(studentService.getById("1").getNume(), name);
     }
-    @Test
-    public void testAddStudentNoName(){
-        boolean thrown=false;
-        try {
-            studentService.add(new String[]{"3", "", "933", "bob@nomail.com", "teacher"});
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            thrown=true;
-        }
-        assertTrue(thrown);
-    }
-    @Test
-    public void testAddStudentNULLName(){
-        boolean thrown=false;
-        try {
-            studentService.add(new String[]{"3", null, "933", "bob@nomail.com", "teacher"});
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            thrown=true;
-        }
-        assertTrue(thrown);
-    }
-    @Test
-    public void testAddStudentNoEmail(){
-        boolean thrown=false;
-        try {
-            studentService.add(new String[]{"3", "bob", "933", "", "teacher"});
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            thrown=true;
-        }
-        assertTrue(thrown);
-    }
-    @Test
-    public void testAddStudentNULLEmail(){
-        boolean thrown=false;
-        try {
-            studentService.add(new String[]{"3", "bob", "933", null, "teacher"});
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            thrown=true;
-        }
-        assertTrue(thrown);
-    }
 
     @Test
-    public void testAddStudentNegativeGroup(){
-        boolean thrown=false;
+    public void testAddStudentNegativeGroup() {
+        boolean thrown = false;
         try {
             studentService.add(new String[]{"3", "bob", "-1", "bob@nomail.com", "teacher"});
         } catch (ValidatorException e) {
             e.printStackTrace();
-            thrown=true;
+            thrown = true;
         }
         assertTrue(thrown);
     }
-    @Test
-    public void testAddStudentNoCoordinator(){
-        boolean thrown=false;
-        try {
-            studentService.add(new String[]{"3", "bob", "933", "bob@nomail.com", ""});
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            thrown=true;
-        }
-        assertTrue(thrown);
-    }
-    @Test
-    public void testAddStudentNULLCoordinator(){
-        boolean thrown=false;
-        try {
-            studentService.add(new String[]{"3", "bob", "933", "bob@nomail.com", null});
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            thrown=true;
-        }
-        assertTrue(thrown);
-    }
-
 }
