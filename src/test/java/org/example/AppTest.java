@@ -22,19 +22,17 @@ public class AppTest {
      * Rigorous Test :-)
      */
     private AbstractService<String, Student> studentService;
-    private AbstractXMLService<String, Student> studentXMLService;
     @Before
     public void SetUp()throws Exception {
         StudentValidator studentValidator = new StudentValidator();
         StudentFileRepo studentFileRepository = new StudentFileRepo("students.txt", studentValidator);
         StudentXMLRepo studentXMLRepo=new StudentXMLRepo(studentValidator,"students.xml");
         studentService= new StudentService(studentFileRepository);
-        studentXMLService=new StudentXMLService(studentXMLRepo);
     }
 
     // IN CLASS //
 
-    @Test
+    //@Test
     public void testAddStudentTXTFileService() {
         boolean thrown=false;
         String name="bob";
@@ -49,8 +47,8 @@ public class AppTest {
     }
 
     // adds a student with a negative group number
-    @Test
-    public void testAddStudentXMLFileService() {
+    //@Test
+    public void testAddStudentNegativeGroup() {
         boolean thrown = false;
         try {
             studentService.add(new String[]{"3", "bob", "-1", "bob@nomail.com", "teacher"});
@@ -63,7 +61,7 @@ public class AppTest {
 
     // TAKE HOME //
 
-    @Test
+    //@Test
     public void testAddStudentNoName(){
         boolean thrown=false;
         try {
@@ -85,7 +83,7 @@ public class AppTest {
         }
         assertTrue(thrown);
     }
-    @Test
+    //@Test
     public void testAddStudentNoEmail(){
         boolean thrown=false;
         try {
@@ -108,7 +106,7 @@ public class AppTest {
         assertTrue(thrown);
     }
 
-    @Test
+    //@Test
     public void testAddStudentNoCoordinator(){
         boolean thrown=false;
         try {
