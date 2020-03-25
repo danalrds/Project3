@@ -32,7 +32,7 @@ public class AppTest {
 
     // IN CLASS //
 
-    //@Test
+    @Test
     public void testAddStudentTXTFileService() {
         boolean thrown=false;
         String name="bob";
@@ -47,7 +47,7 @@ public class AppTest {
     }
 
     // adds a student with a negative group number
-    //@Test
+    @Test
     public void testAddStudentNegativeGroup() {
         boolean thrown = false;
         try {
@@ -61,7 +61,7 @@ public class AppTest {
 
     // TAKE HOME //
 
-    //@Test
+    @Test
     public void testAddStudentNoName(){
         boolean thrown=false;
         try {
@@ -83,7 +83,7 @@ public class AppTest {
         }
         assertTrue(thrown);
     }
-    //@Test
+    @Test
     public void testAddStudentNoEmail(){
         boolean thrown=false;
         try {
@@ -106,7 +106,7 @@ public class AppTest {
         assertTrue(thrown);
     }
 
-    //@Test
+    @Test
     public void testAddStudentNoCoordinator(){
         boolean thrown=false;
         try {
