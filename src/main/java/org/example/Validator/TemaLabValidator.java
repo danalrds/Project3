@@ -15,5 +15,8 @@ public class TemaLabValidator implements IValidator<TemaLab> {
         }else if(t.getTermenLimita()<=0 || t.getTermenLimita()>14) {
             throw new ValidatorException("Termen limita invalid\n");
         }
+        else if (t.getSaptammanaPredarii()>t.getTermenLimita()){
+            throw new ValidatorException("Perioada invalida\n");
+        }
     }
 }

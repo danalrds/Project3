@@ -64,7 +64,7 @@ public class WhiteBoxTesting {
     }
 
     @Test
-    public void testAddAssignmentWhichIsNotValid()  {
+    public void testAddAssignmentInvalidFinalDeadline()  {
         int beforeSize=assignmentService.size();
         String description="description2";
         boolean thrown=false;
@@ -82,4 +82,81 @@ public class WhiteBoxTesting {
         assertNull(assignment);
         assertEquals(exceptionMessage,"Termen limita invalid\n");
     }
+
+    @Test
+    public void testAddAssignmentEmptyDescription()  {
+        int beforeSize=assignmentService.size();
+        boolean thrown=false;
+        String exceptionMessage="";
+        try {
+            assignmentService.add(new String[]{"5", "", "10", "13"});
+        } catch (ValidatorException e) {
+            e.printStackTrace();
+            exceptionMessage=e.getMessage();
+            thrown=true;
+        }
+        assertTrue(thrown);
+        assertEquals(assignmentService.size(), beforeSize );
+        TemaLab assignment=assignmentService.getById(5);
+        assertNull(assignment);
+        assertEquals(exceptionMessage,"Descriere tema invalida\n");
+    }
+
+    @Test
+    public void testAddAssignmentNullDescription()  {
+        int beforeSize=assignmentService.size();
+        boolean thrown=false;
+        String exceptionMessage="";
+        try {
+            assignmentService.add(new String[]{"6", null, "10", "13"});
+        } catch (ValidatorException e) {
+            e.printStackTrace();
+            exceptionMessage=e.getMessage();
+            thrown=true;
+        }
+        assertTrue(thrown);
+        assertEquals(assignmentService.size(), beforeSize );
+        TemaLab assignment=assignmentService.getById(5);
+        assertNull(assignment);
+        assertEquals(exceptionMessage,"Descriere tema invalida\n");
+    }
+    @Test
+    public void testAddAssignmentInvalidDeadline()  {
+        int beforeSize=assignmentService.size();
+        String description="description2";
+        boolean thrown=false;
+        String exceptionMessage="";
+        try {
+            assignmentService.add(new String[]{"2", description, "13", "18"});
+        } catch (ValidatorException e) {
+            e.printStackTrace();
+            exceptionMessage=e.getMessage();
+            thrown=true;
+        }
+        assertTrue(thrown);
+        assertEquals(assignmentService.size(), beforeSize );
+        TemaLab assignment=assignmentService.getById(2);
+        assertNull(assignment);
+        assertEquals(exceptionMessage,"Sapatamana predarii invalida\n");
+    }
+    @Test
+    public void testAddAssignmentInvalidPeriod()  {
+        int beforeSize=assignmentService.size();
+        String description="description7";
+        boolean thrown=false;
+        String exceptionMessage="";
+        try {
+            assignmentService.add(new String[]{"7", description, "10", "14"});
+        } catch (ValidatorException e) {
+            e.printStackTrace();
+            exceptionMessage=e.getMessage();
+            thrown=true;
+        }
+        assertTrue(thrown);
+        assertEquals(assignmentService.size(), beforeSize );
+        TemaLab assignment=assignmentService.getById(7);
+        assertNull(assignment);
+        assertEquals(exceptionMessage,"Perioada invalida\n");
+    }
+
 }
