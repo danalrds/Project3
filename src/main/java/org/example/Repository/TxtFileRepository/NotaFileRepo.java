@@ -6,6 +6,7 @@ import org.example.Validator.NotaValidator;
 
 import java.io.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class NotaFileRepo extends AbstractFileRepository {
     public NotaFileRepo(String filename, NotaValidator val) throws IOException {
@@ -19,7 +20,8 @@ public class NotaFileRepo extends AbstractFileRepository {
         Integer idTema = Integer.parseInt(info[2]);
         double valoare = Double.parseDouble(info[3]);
         //TemaLab t=findOne(idTema);
-        LocalDateTime ldt=LocalDateTime.parse(info[4]);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime ldt=LocalDateTime.parse(info[4],formatter);
         Nota n = new Nota(idNota, idStudent, idTema, valoare, ldt);
         return n;
     }
